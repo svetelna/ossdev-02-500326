@@ -6,6 +6,9 @@ addons:
     packages:
     - python3-pip
 
+before_install:
+    - pip install pycodestyle
+
 python:
   - "3.6"
   - "3.7"
@@ -13,3 +16,4 @@ python:
 
 script:
   - PYTHONPATH=.:$PYTHONPATH ./run_tests.sh
+  - find . -name \*.py -type f -print0 | xargs -0 pycodestyle --ignore=E402
